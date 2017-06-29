@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from openerp import api, fields, models
+from openerp import api, fields, models, SUPERUSER_ID
+from openerp.tools import float_compare
+from openerp.tools import float_round
+from datetime import datetime
+from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT
 
 
 class StockQuant(models.Model):
