@@ -15,7 +15,7 @@ class AccountAnalyticAccount(models.Model):
         company_obj = self.env['res.company']
         company_id = company_obj._company_default_get('stock.warehouse')
         warehouse_ids = warehouse_obj.search(
-            [('company_id', '=', company_id)], limit=1) or []
+            [('company_id', '=', company_id.id)], limit=1) or []
         if warehouse_ids:
             return warehouse_ids[0]
         else:
