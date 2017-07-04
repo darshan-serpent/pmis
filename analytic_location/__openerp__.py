@@ -3,7 +3,6 @@
 # © 2016 Matmoz d.o.o.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-
 {
     'name': 'Stock Location in Analytic Account',
     'version': '9.0.1.0.0',
@@ -22,6 +21,4 @@
         'view/analytic_account_view.xml',
     ],
     'installable': True,
-    'active': False,
-    'application': True,
 }

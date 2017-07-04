@@ -10,18 +10,6 @@ class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
 
     @api.model
-    def _default_warehouse(self):
-        warehouse_obj = self.env['stock.warehouse']
-        company_obj = self.env['res.company']
-        company_id = company_obj._company_default_get('stock.warehouse')
-        warehouse_ids = warehouse_obj.search(
-            [('company_id', '=', company_id.id)], limit=1) or []
-        if warehouse_ids:
-            return warehouse_ids[0]
-        else:
-            return False
-
-    @api.model
     def _default_dest_address(self):
         partner_id = self.env.context.get('partner_id', False)
         if partner_id:
@@ -31,9 +19,6 @@ class AccountAnalyticAccount(models.Model):
         else:
             return False
 
-    warehouse_id = fields.Many2one(
-        'stock.warehouse',
-        'Warehouse', default=_default_warehouse)
     location_id = fields.Many2one(
         'stock.location',
         'Default Stock Location',

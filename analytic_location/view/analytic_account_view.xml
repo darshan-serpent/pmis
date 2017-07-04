@@ -14,7 +14,6 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='move_ids']"
                        position="after">
-                    <field name="warehouse_id"/>
                     <field name="location_id"/>
                     <field name="dest_address_id"/>
                 </xpath>
