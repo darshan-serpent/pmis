@@ -86,8 +86,8 @@ class AccountAnalyticAccount(models.Model):
         res = super(AccountAnalyticAccount, self).write(values)
 
         if values.get('stage_id'):
-            project_obj = self.pool.get('project.project')
-            stage_obj = self.pool.get('analytic.account.stage')
+            project_obj = self.env['project.project']
+            stage_obj = self.env['analytic.account.stage']
             for acc in self:
                 # Search if there's an associated project
                 project_ids = project_obj.search(
@@ -102,10 +102,8 @@ class AccountAnalyticAccount(models.Model):
                 # it as well (only if the new stage sequence is greater than
                 #  the current)
                 if new_stage.id in [st.id for st in acc.child_stage_ids]:
-                    child_ids = self.search(cr, uid,
-                                            [('parent_id', '=', acc.id)])
-                    for child in self.browse(cr, uid, child_ids,
-                                             context=context):
+                    child_ids = self.search([('parent_id', '=', acc.id)])
+                    for child in self.browse(child_ids):
                         if child.stage_id.sequence < new_stage.sequence:
                             child.write({'stage_id': new_stage.id})
                 if old_stage and old_stage.project_state == \

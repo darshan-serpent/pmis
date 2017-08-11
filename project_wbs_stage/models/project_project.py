@@ -67,7 +67,7 @@ class ProjectProject(models.Model):
                     self.env.context.get('stage_updated', False)):
                 if not self.env.context.get(
                         'change_project_stage_from_status', False):
-                    self = self.with_context.update(
+                    self = self.with_context(
                         change_project_stage_from_status=True)
                     # Change the stage corresponding to the new status
                     if p.parent_id and p.parent_id.child_stage_ids:
