@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+# © 2015 Eficent Business and IT Consulting Services S.L.
+# (Jordi Ballester Alomar)
+#
+# © 2016 Matmoz d.o.o.
+# (Matjaž Mozetič)
+#
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from openerp import api, fields, models
 
@@ -50,7 +57,7 @@ class AccountAnalyticPlanJournal(models.Model):
         default=lambda self:
             self.env['res.users'].browse(self._uid).company_id.id)
     analytic_journal = fields.Many2one(
-        'account.analytic.journal',
-        'Actual Analytic journal',
+        'account.journal',
+        'Actual Journal',
         required=False
     )
